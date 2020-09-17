@@ -3,7 +3,6 @@ package at.ac.fhcampuswien;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,7 +48,7 @@ class AppTest {
     public void sayHelloWorld()
     {
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.sayHelloWorld();
 
         // assertion
@@ -58,7 +57,7 @@ class AppTest {
     @Test
     void helloRobot() {
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.helloRobot();
         String output = "0123456789012345678901\n";
         output += "         __\n" +
@@ -78,7 +77,7 @@ class AppTest {
     @Test
     void sumOfLiterals() {
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.sumOfLiterals();
 
         // assertion
@@ -91,7 +90,7 @@ class AppTest {
         ps.println(6);
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.addTwoNumbers();
 
         // assertion
@@ -104,7 +103,7 @@ class AppTest {
         ps.println(5);
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.swapTwoNumbers();
 
         // assertion
@@ -122,7 +121,7 @@ class AppTest {
         ps.println(2);
         ps.println(5);
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.compareTwoNumbers();
 
         // assertion
@@ -138,7 +137,7 @@ class AppTest {
         ps.println(2);
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.compareTwoNumbers();
 
         // assertion
@@ -154,7 +153,7 @@ class AppTest {
         ps.println(5);
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.compareTwoNumbers();
 
         // assertion
@@ -165,192 +164,142 @@ class AppTest {
     }
 
     @Test
-    void ratingSalesPerson() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "100000";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
+    void ratingSalesPerson1() {
+        ps.println("100000");
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.ratingSalesPerson();
 
         // assertion
         String expected = "Enter annual Revenue: " +
                 "Invalid Revenue\n";
         assertEquals(expected, bos.toString());
-
-        input = "60000";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
-        // action
-        exercise1 = new App("Exercise1");
-        exercise1.ratingSalesPerson();
-
-        // assertion
-        expected = "Enter annual Revenue: " +
-                "Good Sales Revenue\n";
-        assertEquals(expected, bos.toString());
-
-        input = "0";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
-        // action
-        exercise1 = new App("Exercise1");
-        exercise1.ratingSalesPerson();
-
-        // assertion
-        expected = "Enter annual Revenue: " +
-                "Poor Sales Revenue\n";
-        assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test
-    void getCommissionRate() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
+    void ratingSalesPerson2() {
+        ps.println("60000");
+        // action
+        App exercise1 = new App();
+        exercise1.ratingSalesPerson();
 
-        String input = "1";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+        // assertion
+        String expected = "Enter annual Revenue: " +
+                "Good Sales Revenue\n";
+        assertEquals(expected, bos.toString());
+    }
+
+    @Test
+    void ratingSalesPerson3() {
+        ps.println("0");
+        // action
+        App exercise1 = new App();
+        exercise1.ratingSalesPerson();
+
+        // assertion
+        String expected = "Enter annual Revenue: " +
+                "Poor Sales Revenue\n";
+        assertEquals(expected, bos.toString());
+    }
+
+
+
+    @Test
+    void getCommissionRate1() {
+        ps.println("1");
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.getCommissionRate();
 
         // assertion
         String expected = "Enter CommissionClass: " +
                 "Your Commission Rate was set to 0.01\n";
         assertEquals(expected, bos.toString());
-
-        input = "4";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
-        // action
-        exercise1 = new App("Exercise1");
-        exercise1.getCommissionRate();
-
-        // assertion
-        expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.04\n";
-        assertEquals(expected, bos.toString());
-
-        input = "0";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
-        // action
-        exercise1 = new App("Exercise1");
-        exercise1.getCommissionRate();
-
-        // assertion
-        expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.0\n";
-        assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test
-    void leapYear() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "2000";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+    void getCommissionRate2() {
+        ps.println("4");
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
+        exercise1.getCommissionRate();
+
+        // assertion
+        String expected = "Enter CommissionClass: " +
+                "Your Commission Rate was set to 0.04\n";
+        assertEquals(expected, bos.toString());
+    }
+
+    @Test
+    void getCommissionRate3() {
+        ps.println("0");
+
+        // action
+        App exercise1 = new App();
+        exercise1.getCommissionRate();
+
+        // assertion
+        String expected = "Enter CommissionClass: " +
+                "Your Commission Rate was set to 0.0\n";
+        assertEquals(expected, bos.toString());
+    }
+
+
+    @Test
+    void leapYear1() {
+        ps.println("2000");
+
+        // action
+        App exercise1 = new App();
         exercise1.leapyear();
 
         // assertion
         String expected = "Year: " +
                 "Leapyear\n";
         assertEquals(expected, bos.toString());
+    }
 
-        input = "1900";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+    @Test
+    void leapYear2() {
+        ps.println("1900");
 
         // action
-        exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.leapyear();
 
         // assertion
-        expected = "Year: " +
+        String expected = "Year: " +
                 "Not a Leapyear\n";
         assertEquals(expected, bos.toString());
+    }
 
-        input = "1845";
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+    @Test
+    void leapYear3() {
+        ps.println("1845");
 
         // action
-        exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.leapyear();
 
         // assertion
-        expected = "Year: " +
+        String expected = "Year: " +
                 "Not a Leapyear\n";
         assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test
     void transposedNumbers() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "135";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+        ps.println("135");
 
         // action
-        App exercise1 = new App("Exercise1");
+        App exercise1 = new App();
         exercise1.transposedNumbers();
 
         // assertion
         String expected = "Number: " +
                 "531\n";
         assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 }
