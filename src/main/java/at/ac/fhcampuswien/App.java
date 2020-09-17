@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class App {
 
-    String title;
-    Scanner scan; // use the scan variable in any task that you need it (no need to make a call to new Scanner())
-
-    public App(String title){
-        this.title = title;
-        this.scan = new Scanner(System.in);
-    }
-
     //todo Task 1
     public void sayHelloWorld(){
         // input your solution here
@@ -64,7 +56,7 @@ public class App {
 
 
     public static void main(String[] args){
-        App exercise1 = new App("Here we go. Let's do Exercise 1!");
+        App exercise1 = new App();
 
         System.out.println("Task 1: Say Hello World");
         exercise1.sayHelloWorld();
