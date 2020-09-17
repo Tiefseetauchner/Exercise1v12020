@@ -1,8 +1,6 @@
 package at.ac.fhcampuswien;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.*;
 import java.util.Scanner;
@@ -10,6 +8,11 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
+
+    private PrintStream originalOut;
+    private InputStream originalIn;
+    private ByteArrayOutputStream bos;
+    private PrintStream ps;
 
     @BeforeAll
     public static void init(){
@@ -21,29 +24,39 @@ class AppTest {
         System.out.println("Finished Testing Exercise1");
     }
 
+    @BeforeEach
+    public void setupStreams() throws IOException {
+        originalOut = System.out;
+        originalIn = System.in;
+
+        bos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bos));
+
+        PipedOutputStream pos = new PipedOutputStream();
+        PipedInputStream pis = new PipedInputStream(pos);
+        System.setIn(pis);
+        ps = new PrintStream(pos, true);
+    }
+
+    @AfterEach
+    public void tearDownStreams() {
+        // undo the binding in System
+        System.setOut(originalOut);
+        System.setIn(originalIn);
+    }
+
     @Test
     public void sayHelloWorld()
     {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
         // action
         App exercise1 = new App("Exercise1");
         exercise1.sayHelloWorld();
 
         // assertion
         assertEquals("Hello World!\n", bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
     }
     @Test
     void helloRobot() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
         // action
         App exercise1 = new App("Exercise1");
         exercise1.helloRobot();
@@ -60,38 +73,22 @@ class AppTest {
 
         // assertion
         assertEquals(output, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
     }
 
     @Test
     void sumOfLiterals() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
         // action
         App exercise1 = new App("Exercise1");
         exercise1.sumOfLiterals();
 
         // assertion
         assertEquals("64582\n", bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
     }
 
     @Test
     void addTwoNumbers() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "6" + System.lineSeparator() + "6" + System.lineSeparator();
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+        ps.println(6);
+        ps.println(6);
 
         // action
         App exercise1 = new App("Exercise1");
@@ -99,23 +96,12 @@ class AppTest {
 
         // assertion
         assertEquals("12\n", bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
-
     }
 
     @Test
     void swapTwoNumbers() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "2" + System.lineSeparator() + "5" + System.lineSeparator();
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+        ps.println(2);
+        ps.println(5);
 
         // action
         App exercise1 = new App("Exercise1");
@@ -129,23 +115,12 @@ class AppTest {
                 "x: 5\n" +
                 "y: 2\n";
         assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test
-    void compareTwoNumbers() {
-        PrintStream originalOut = System.out;
-        InputStream originalIn = System.in;
-
-        String input = "2" + System.lineSeparator() + "5" + System.lineSeparator();
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
+    void compareTwoNumbers1() {
+        ps.println(2);
+        ps.println(5);
         // action
         App exercise1 = new App("Exercise1");
         exercise1.compareTwoNumbers();
@@ -155,42 +130,38 @@ class AppTest {
                 "n2: " +
                 "n2 > n1\n";
         assertEquals(expected, bos.toString());
+    }
 
-        input = "5" + System.lineSeparator() + "2" + System.lineSeparator();
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+    @Test
+    void compareTwoNumbers2() {
+        ps.println(5);
+        ps.println(2);
 
         // action
-        exercise1 = new App("Exercise1");
+        App exercise1 = new App("Exercise1");
         exercise1.compareTwoNumbers();
 
         // assertion
-        expected = "n1: " +
+        String expected = "n1: " +
                 "n2: " +
                 "n1 > n2\n";
         assertEquals(expected, bos.toString());
+    }
 
-        input = "5" + System.lineSeparator() + "5" + System.lineSeparator();
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
+    @Test
+    void compareTwoNumbers3() {
+        ps.println(5);
+        ps.println(5);
 
         // action
-        exercise1 = new App("Exercise1");
+        App exercise1 = new App("Exercise1");
         exercise1.compareTwoNumbers();
 
         // assertion
-        expected = "n1: " +
+        String expected = "n1: " +
                 "n2: " +
                 "n1 == n2\n";
         assertEquals(expected, bos.toString());
-
-        // undo the binding in System
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test
@@ -304,7 +275,7 @@ class AppTest {
     }
 
     @Test
-    void leapyear() {
+    void leapYear() {
         PrintStream originalOut = System.out;
         InputStream originalIn = System.in;
 
