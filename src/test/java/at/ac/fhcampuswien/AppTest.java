@@ -52,14 +52,14 @@ class AppTest {
         exercise1.sayHelloWorld();
 
         // assertion
-        assertEquals("Hello World!\n", bos.toString());
+        assertEquals("Hello World!" + System.lineSeparator(), bos.toString());
     }
     @Test
     void helloRobot() {
         // action
         App exercise1 = new App();
         exercise1.helloRobot();
-        String output = "0123456789012345678901\n";
+        String output = "0123456789012345678901" + System.lineSeparator();
         output += "         __\n" +
                 " _(\\    |@@|\n" +
                 "(__/\\__ \\--/ __\n" +
@@ -68,7 +68,7 @@ class AppTest {
                 "       /\\__/\\ \\__O (__\n" +
                 "      (--/\\--)    \\__/\n" +
                 "      _)(  )(_\n" +
-                "     `---''---`\n";
+                "     `---''---`" + System.lineSeparator();
 
         // assertion
         assertEquals(output, bos.toString());
@@ -81,7 +81,7 @@ class AppTest {
         exercise1.sumOfLiterals();
 
         // assertion
-        assertEquals("64582\n", bos.toString());
+        assertEquals("64582" + System.lineSeparator(), bos.toString());
     }
 
     @Test
@@ -94,7 +94,7 @@ class AppTest {
         exercise1.addTwoNumbers();
 
         // assertion
-        assertEquals("12\n", bos.toString());
+        assertEquals("12" + System.lineSeparator(), bos.toString());
     }
 
     @Test
@@ -107,12 +107,12 @@ class AppTest {
         exercise1.swapTwoNumbers();
 
         // assertion
-        String expected = "Before Swap:\n" +
+        String expected = "Before Swap:" + System.lineSeparator() +
                 "x: " +
                 "y: " +
-                "After Swap:\n" +
-                "x: 5\n" +
-                "y: 2\n";
+                "After Swap:" + System.lineSeparator() +
+                "x: 5" + System.lineSeparator() +
+                "y: 2" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -127,7 +127,7 @@ class AppTest {
         // assertion
         String expected = "n1: " +
                 "n2: " +
-                "n2 > n1\n";
+                "n2 > n1" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -143,7 +143,7 @@ class AppTest {
         // assertion
         String expected = "n1: " +
                 "n2: " +
-                "n1 > n2\n";
+                "n1 > n2" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -159,7 +159,7 @@ class AppTest {
         // assertion
         String expected = "n1: " +
                 "n2: " +
-                "n1 == n2\n";
+                "n1 == n2" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -172,7 +172,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter annual Revenue: " +
-                "Invalid Revenue\n";
+                "Invalid Revenue" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -185,7 +185,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter annual Revenue: " +
-                "Good Sales Revenue\n";
+                "Good Sales Revenue" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -198,7 +198,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter annual Revenue: " +
-                "Poor Sales Revenue\n";
+                "Poor Sales Revenue" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -214,7 +214,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.01\n";
+                "Your Commission Rate was set to 0.01" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -228,7 +228,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.04\n";
+                "Your Commission Rate was set to 0.04" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -242,7 +242,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.0\n";
+                "Your Commission Rate was set to 0.0" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -257,7 +257,7 @@ class AppTest {
 
         // assertion
         String expected = "Year: " +
-                "Leapyear\n";
+                "Leapyear" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -271,7 +271,7 @@ class AppTest {
 
         // assertion
         String expected = "Year: " +
-                "Not a Leapyear\n";
+                "Not a Leapyear" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -285,7 +285,7 @@ class AppTest {
 
         // assertion
         String expected = "Year: " +
-                "Not a Leapyear\n";
+                "Not a Leapyear" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
@@ -299,7 +299,7 @@ class AppTest {
 
         // assertion
         String expected = "Number: " +
-                "531\n";
+                "531" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 }
