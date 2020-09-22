@@ -60,14 +60,14 @@ class AppTest {
         App exercise1 = new App();
         exercise1.helloRobot();
         String output = "0123456789012345678901" + System.lineSeparator();
-        output += "         __\n" +
-                " _(\\    |@@|\n" +
-                "(__/\\__ \\--/ __\n" +
-                "   \\___|----|  |   __\n" +
-                "       \\ }{ /\\ )_ / _\\\n" +
-                "       /\\__/\\ \\__O (__\n" +
-                "      (--/\\--)    \\__/\n" +
-                "      _)(  )(_\n" +
+        output += "         __" + System.lineSeparator() +
+                " _(\\    |@@|" + System.lineSeparator() +
+                "(__/\\__ \\--/ __" + System.lineSeparator() +
+                "   \\___|----|  |   __" + System.lineSeparator() +
+                "       \\ }{ /\\ )_ / _\\" + System.lineSeparator() +
+                "       /\\__/\\ \\__O (__" + System.lineSeparator() +
+                "      (--/\\--)    \\__/" + System.lineSeparator() +
+                "      _)(  )(_" + System.lineSeparator() +
                 "     `---''---`" + System.lineSeparator();
 
         // assertion
