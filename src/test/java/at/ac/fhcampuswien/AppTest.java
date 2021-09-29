@@ -6,6 +6,7 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Timeout(2)
 class AppTest {
 
     private PrintStream originalOut;
