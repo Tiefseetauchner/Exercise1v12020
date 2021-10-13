@@ -67,7 +67,7 @@ public class App {
         System.out.println("\nTask 3: Literals");
         exercise1.sumOfLiterals();
 
-        System.out.println("\nTask 4: Add two Numbers (ints, floats,...)");
+        System.out.println("\nTask 4: Add two Numbers");
         exercise1.addTwoNumbers();
 
         System.out.println("\nTask 5: Swap two Numbers without using a helper variable");
