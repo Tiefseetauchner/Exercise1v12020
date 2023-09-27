@@ -243,7 +243,7 @@ class AppTest {
 
         // assertion
         String expected = "Enter CommissionClass: " +
-                "Your Commission Rate was set to 0.0" + System.lineSeparator();
+                "Your Commission Rate was set to 0.00" + System.lineSeparator();
         assertEquals(expected, bos.toString());
     }
 
